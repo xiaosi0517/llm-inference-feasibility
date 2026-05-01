@@ -7,3 +7,4 @@ results/*.png
 !results/.gitkeep
 .idea/
 .vscode/
+results/server_logs/
