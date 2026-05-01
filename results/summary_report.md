@@ -1,11 +1,12 @@
 # Summary report
 
-- Total cells measured: **4**
-- Feasibility breakdown: feasible=0, marginal=4, infeasible=0
+- Total cells measured: **16**
+- Feasibility breakdown: feasible=6, marginal=6, infeasible=4
 
 ## Recommended deployments
 
-- No feasible cells. Try a smaller model, FP8 KV cache, or reduce max-model-len / max-num-seqs.
+- **Highest-throughput feasible config:** ctx=1024, conc=8 → 305.3 tok/s, peak VRAM 21756 MB.
+- **Largest feasible context window:** ctx=4096 at conc=2 (p95 latency 3364.3 ms).
 
 ## OOM boundary
 
