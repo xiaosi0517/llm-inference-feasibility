@@ -1,0 +1,96 @@
+/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:58: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/connections.py:8: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from vllm.version import __version__ as VLLM_VERSION
+INFO 05-01 22:35:02 api_server.py:528] vLLM API server version dev
+INFO 05-01 22:35:02 api_server.py:529] args: Namespace(host='0.0.0.0', port=8000, uvicorn_log_level='info', allow_credentials=False, allowed_origins=['*'], allowed_methods=['*'], allowed_headers=['*'], api_key=None, lora_modules=None, prompt_adapters=None, chat_template=None, response_role='assistant', ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, ssl_cert_reqs=0, root_path=None, middleware=[], return_tokens_as_token_ids=False, disable_frontend_multiprocessing=False, enable_auto_tool_choice=False, tool_call_parser=None, tool_parser_plugin='', model='Qwen/Qwen2.5-32B-Instruct-AWQ', tokenizer=None, skip_tokenizer_init=False, revision=None, code_revision=None, tokenizer_revision=None, tokenizer_mode='auto', trust_remote_code=False, download_dir=None, load_format='auto', config_format='auto', dtype='half', kv_cache_dtype='fp8', quantization_param_path=None, max_model_len=8192, guided_decoding_backend='outlines', distributed_executor_backend=None, worker_use_ray=False, pipeline_parallel_size=1, tensor_parallel_size=1, max_parallel_loading_workers=None, ray_workers_use_nsight=False, block_size=16, enable_prefix_caching=False, disable_sliding_window=False, use_v2_block_manager=True, num_lookahead_slots=0, seed=0, swap_space=4, cpu_offload_gb=0, gpu_memory_utilization=0.92, num_gpu_blocks_override=None, max_num_batched_tokens=None, max_num_seqs=4, max_logprobs=20, disable_log_stats=False, quantization='awq_marlin', rope_scaling=None, rope_theta=None, enforce_eager=False, max_context_len_to_capture=None, max_seq_len_to_capture=8192, disable_custom_all_reduce=False, tokenizer_pool_size=0, tokenizer_pool_type='ray', tokenizer_pool_extra_config=None, limit_mm_per_prompt=None, mm_processor_kwargs=None, enable_lora=False, max_loras=1, max_lora_rank=16, lora_extra_vocab_size=256, lora_dtype='auto', long_lora_scaling_factors=None, max_cpu_loras=None, fully_sharded_loras=False, enable_prompt_adapter=False, max_prompt_adapters=1, max_prompt_adapter_token=0, device='auto', num_scheduler_steps=1, multi_step_stream_outputs=True, scheduler_delay_factor=0.0, enable_chunked_prefill=None, speculative_model=None, speculative_model_quantization=None, num_speculative_tokens=None, speculative_disable_mqa_scorer=False, speculative_draft_tensor_parallel_size=None, speculative_max_model_len=None, speculative_disable_by_batch_size=None, ngram_prompt_lookup_max=None, ngram_prompt_lookup_min=None, spec_decoding_acceptance_method='rejection_sampler', typical_acceptance_sampler_posterior_threshold=None, typical_acceptance_sampler_posterior_alpha=None, disable_logprobs_during_spec_decoding=None, model_loader_extra_config=None, ignore_patterns=[], preemption_mode=None, served_model_name=['qwen2.5-32b-awq'], qlora_adapter_name_or_path=None, otlp_traces_endpoint=None, collect_detailed_traces=None, disable_async_output_proc=False, override_neuron_config=None, scheduling_policy='fcfs', disable_log_requests=False, max_log_len=None, disable_fastapi_docs=False)
+INFO 05-01 22:35:02 api_server.py:166] Multiprocessing frontend to use ipc:///tmp/c26f8702-c621-472a-8d02-29e65e691744 for IPC Path.
+INFO 05-01 22:35:02 api_server.py:179] Started engine process with PID 15904
+/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:58: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/connections.py:8: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from vllm.version import __version__ as VLLM_VERSION
+INFO 05-01 22:35:42 awq_marlin.py:97] The model is convertible to awq_marlin during runtime. Using awq_marlin kernel.
+INFO 05-01 22:35:42 config.py:636] Using fp8 data type to store kv cache. It reduces the GPU memory footprint and boosts the performance. Meanwhile, it may cause accuracy drop without a proper scaling factor
+INFO 05-01 22:36:18 awq_marlin.py:97] The model is convertible to awq_marlin during runtime. Using awq_marlin kernel.
+INFO 05-01 22:36:18 config.py:636] Using fp8 data type to store kv cache. It reduces the GPU memory footprint and boosts the performance. Meanwhile, it may cause accuracy drop without a proper scaling factor
+INFO 05-01 22:36:18 llm_engine.py:237] Initializing an LLM engine (vdev) with config: model='Qwen/Qwen2.5-32B-Instruct-AWQ', speculative_config=None, tokenizer='Qwen/Qwen2.5-32B-Instruct-AWQ', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=awq_marlin, enforce_eager=False, kv_cache_dtype=fp8, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=qwen2.5-32b-awq, use_v2_block_manager=True, num_scheduler_steps=1, chunked_prefill_enabled=False multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=True, mm_processor_kwargs=None)
+INFO 05-01 22:36:20 selector.py:234] Cannot use FlashAttention-2 backend for FP8 KV cache.
+WARNING 05-01 22:36:20 selector.py:236] Please use FlashInfer backend with FP8 KV Cache for better performance by setting environment variable  VLLM_ATTENTION_BACKEND=FLASHINFER
+INFO 05-01 22:36:20 selector.py:115] Using XFormers backend.
+/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+INFO 05-01 22:36:27 model_runner.py:1060] Starting to load model Qwen/Qwen2.5-32B-Instruct-AWQ...
+INFO 05-01 22:36:27 selector.py:234] Cannot use FlashAttention-2 backend for FP8 KV cache.
+WARNING 05-01 22:36:27 selector.py:236] Please use FlashInfer backend with FP8 KV Cache for better performance by setting environment variable  VLLM_ATTENTION_BACKEND=FLASHINFER
+INFO 05-01 22:36:27 selector.py:115] Using XFormers backend.
+INFO 05-01 22:36:28 weight_utils.py:243] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:00<00:01,  2.34it/s]
+Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:01<00:01,  1.84it/s]
+Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:01<00:01,  1.73it/s]
+Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:02<00:00,  1.68it/s]
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:02<00:00,  1.65it/s]
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:02<00:00,  1.71it/s]
+
+INFO 05-01 22:36:57 model_runner.py:1071] Loading model weights took 18.1465 GB
+INFO 05-01 22:37:01 gpu_executor.py:122] # GPU blocks: 453, # CPU blocks: 2048
+INFO 05-01 22:37:01 gpu_executor.py:126] Maximum concurrency for 8192 tokens per request: 0.88x
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/engine/multiprocessing/engine.py", line 392, in run_mp_engine
+    engine = MQLLMEngine.from_engine_args(engine_args=engine_args,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/engine/multiprocessing/engine.py", line 141, in from_engine_args
+    return cls(
+           ^^^^
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/engine/multiprocessing/engine.py", line 78, in __init__
+    self.engine = LLMEngine(*args,
+                  ^^^^^^^^^^^^^^^^
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 349, in __init__
+    self._initialize_kv_caches()
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 497, in _initialize_kv_caches
+    self.model_executor.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 129, in initialize_cache
+    self.driver_worker.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/worker/worker.py", line 262, in initialize_cache
+    raise_if_cache_size_invalid(num_gpu_blocks,
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/worker/worker.py", line 492, in raise_if_cache_size_invalid
+    raise ValueError(
+ValueError: The model's max seq len (8192) is larger than the maximum number of tokens that can be stored in KV cache (7248). Try increasing `gpu_memory_utilization` or decreasing `max_model_len` when initializing the engine.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 585, in <module>
+    uvloop.run(run_server(args))
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/uvloop/__init__.py", line 92, in run
+    return runner.run(wrapper())
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/uvloop/__init__.py", line 48, in wrapper
+    return await main
+           ^^^^^^^^^^
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 552, in run_server
+    async with build_async_engine_client(args) as engine_client:
+  File "/usr/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 107, in build_async_engine_client
+    async with build_async_engine_client_from_engine_args(
+  File "/usr/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/llm-inference-feasibility/.venv/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 194, in build_async_engine_client_from_engine_args
+    raise RuntimeError(
+RuntimeError: Engine process failed to start
