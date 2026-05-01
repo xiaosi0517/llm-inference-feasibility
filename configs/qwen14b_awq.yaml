@@ -1,0 +1,28 @@
+# configs/qwen14b_awq.yaml
+# Sweep config for Qwen2.5-14B-Instruct-AWQ on a single 24 GB GPU.
+
+model:
+  hf_repo: "Qwen/Qwen2.5-14B-Instruct-AWQ"
+  served_name: "qwen2.5-14b-awq"          # MUST match scripts/start_vllm_qwen14b_awq.sh
+
+server:
+  base_url: "http://localhost:8000/v1"
+  api_key: "EMPTY"
+
+sweep:
+  context_lengths: [1024, 4096, 8192, 16384]
+  concurrency_levels: [1, 2, 4, 8]
+  max_output_tokens: 128                  # fixed across cells so TPOT is comparable
+  warmup_bursts: 1                        # one burst discarded per cell to warm KV allocator
+  measured_bursts: 3                      # measured bursts per cell -> 3 * concurrency requests
+  request_timeout_s: 120
+
+feasibility:
+  total_vram_mb: 24576                    # 24 GB card
+  feasible_max_mb: 22528                  # 22 GB ceiling for "feasible"
+  p95_latency_ms_max: 30000               # 30 s p95 latency SLO
+  min_success_rate: 1.0                   # any failure -> infeasible
+
+monitor:
+  device_indices: [0]
+  interval_s: 0.1                         # 10 Hz NVML sampling

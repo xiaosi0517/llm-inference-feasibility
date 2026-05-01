@@ -1,0 +1,39 @@
+# configs/mock.yaml
+# Tiny sweep against tools/mock_vllm_server.py.
+#
+# Use this to exercise the entire client harness on a CPU-only laptop
+# (no GPU, no vLLM) before spending money on a rented GPU. Finishes in
+# ~10-30 seconds depending on the mock server's MOCK_TTFT_MS / MOCK_TPOT_MS.
+
+model:
+  # Tiny tokenizer that downloads in seconds. The mock server doesn't tokenize
+  # anything, but `build_prompts()` in sweep_benchmark.py needs SOMETHING to
+  # construct prompts of the requested token length. gpt2 is a small,
+  # always-public choice; swap to any other HF tokenizer if preferred.
+  hf_repo: "gpt2"
+  served_name: "qwen2.5-14b-awq"      # must match SERVED_NAME env in mock server (default)
+
+server:
+  base_url: "http://localhost:8000/v1"
+  api_key: "EMPTY"
+
+sweep:
+  context_lengths: [128, 512]         # tiny grid -- 4 cells total
+  concurrency_levels: [1, 2]
+  max_output_tokens: 16               # short outputs so the sweep finishes in seconds
+  warmup_bursts: 0                    # nothing to warm up on a mock
+  measured_bursts: 1
+  request_timeout_s: 30
+
+feasibility:
+  # Same thresholds as the 24 GB target; the mock won't report VRAM, so every
+  # cell will land in "marginal" (no GPU data) by the classifier rule. That's
+  # the correct behavior to verify -- it confirms the no-NVML fallback works.
+  total_vram_mb: 24576
+  feasible_max_mb: 22528
+  p95_latency_ms_max: 30000
+  min_success_rate: 1.0
+
+monitor:
+  device_indices: [0]
+  interval_s: 0.5

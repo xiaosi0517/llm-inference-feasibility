@@ -1,0 +1,24 @@
+# --- Client side (benchmark + analysis) ---
+# Pinned to recent stable versions; loosen if your environment forces it.
+
+openai>=1.40.0          # OpenAI-compatible client used to talk to vLLM
+httpx>=0.27.0           # transport used by openai>=1.x; explicit for timeout control
+aiohttp>=3.9.0          # fallback async HTTP if you want to bypass openai SDK
+tqdm>=4.66.0            # sweep progress bar
+pandas>=2.2.0           # CSV aggregation
+numpy>=1.26.0
+matplotlib>=3.8.0       # heatmap rendering (no seaborn needed for one heatmap)
+pynvml>=11.5.0          # GPU memory sampling via NVML
+PyYAML>=6.0             # configs/*.yaml loading
+tenacity>=8.2.0         # bounded retries for transient 5xx
+transformers>=4.44.0    # tokenizer only — to build prompts of an exact token length
+
+# --- Dev / test ---
+# Used by `pytest` (unit tests in tests/) and the local-dev mock vLLM server
+# in tools/mock_vllm_server.py (which reuses aiohttp from above).
+pytest>=7.4.0
+
+# --- NOTE on vLLM ---
+# vLLM is intentionally NOT listed here. It has heavy CUDA / torch constraints
+# and is typically installed in a separate "server" environment. See
+# scripts/start_vllm_qwen14b_awq.sh for the recommended install command.

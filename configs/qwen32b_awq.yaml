@@ -1,0 +1,32 @@
+# configs/qwen32b_awq.yaml
+# Sweep config for Qwen2.5-32B-Instruct-AWQ on a single 24 GB GPU.
+#
+# 32B AWQ weights are ~17 GB resident -> KV budget is tight.
+# The launch script for this model defaults to FP8 KV cache and a smaller
+# max-model-len; this sweep grid is correspondingly narrower than 14B's.
+
+model:
+  hf_repo: "Qwen/Qwen2.5-32B-Instruct-AWQ"
+  served_name: "qwen2.5-32b-awq"
+
+server:
+  base_url: "http://localhost:8000/v1"
+  api_key: "EMPTY"
+
+sweep:
+  context_lengths: [1024, 2048, 4096, 8192]   # narrower; 16k is unlikely to fit
+  concurrency_levels: [1, 2, 4]               # narrower; 8 needs FP8 KV at minimum
+  max_output_tokens: 128
+  warmup_bursts: 1
+  measured_bursts: 3
+  request_timeout_s: 180                      # longer prefill on a 32B model
+
+feasibility:
+  total_vram_mb: 24576
+  feasible_max_mb: 22528
+  p95_latency_ms_max: 45000                   # looser SLO for 32B
+  min_success_rate: 1.0
+
+monitor:
+  device_indices: [0]
+  interval_s: 0.1
