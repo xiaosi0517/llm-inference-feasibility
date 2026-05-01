@@ -65,6 +65,6 @@ exec python -m vllm.entrypoints.openai.api_server \
   --max-num-seqs "${MAX_NUM_SEQS}" \
   --gpu-memory-utilization "${GPU_MEM_UTIL}" \
   --tensor-parallel-size "${TP_SIZE}" \
-  --disable-log-requests \
+  --no-enable-log-requests \
   ${ENFORCE_EAGER_FLAG} \
   2>&1 | tee "${LOG_FILE}"

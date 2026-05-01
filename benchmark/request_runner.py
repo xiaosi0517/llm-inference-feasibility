@@ -130,11 +130,13 @@ async def send_request(
         )
 
         async for chunk in stream:
-            # The final chunk (when include_usage=True) has empty choices and
-            # carries the authoritative completion_tokens count.
+            # With stream_options={"include_usage": True}, newer vLLM versions
+            # attach a `usage` block to EVERY chunk (older versions only on the
+            # terminal one). Always record the latest count, but only treat the
+            # chunk as terminal when it carries no choices -- otherwise we'd
+            # `continue` past the content deltas and never stamp TTFT.
             if getattr(chunk, "usage", None) is not None:
                 out_tokens_from_usage = chunk.usage.completion_tokens
-                continue
 
             if not chunk.choices:
                 continue
