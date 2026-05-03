@@ -32,6 +32,22 @@ for what to change when a cell is OOM / marginal / TTFT-bound / TPOT-bound.
 
 ---
 
+## Findings (RTX 4090, 24 GB)
+
+Three sweeps on rented hardware. Full per-cell breakdowns linked below.
+
+| Configuration | Best feasible cell | Verdict |
+|---|---|---|
+| [Qwen2.5-14B-AWQ, FP16 KV](docs/results_qwen14b.md) | ctx=1024, conc=8 → **305 tok/s** | Production-ready up to 4 k context. VRAM-bound at 8 k+. |
+| [Qwen2.5-14B-AWQ, FP8 KV](docs/results_qwen14b_fp8.md) | ctx=1024, conc=8 → **314 tok/s** | Frees ~1 GB VRAM per cell, +1–4% throughput. Keep on by default. |
+| [Qwen2.5-32B-AWQ, FP8 KV](docs/results_qwen32b.md) | ctx=1024, conc=1 → **38 tok/s** | Boots, but not a serving target on a single 24 GB card. |
+
+Headline: **a single RTX 4090 serves Qwen2.5-14B-AWQ comfortably for any
+≤4 k-context workload at ~300 tok/s aggregate.** It does not serve 32B at
+useful throughput; that needs multi-GPU or a 40+ GB card.
+
+---
+
 ## Project layout
 
 ```text
